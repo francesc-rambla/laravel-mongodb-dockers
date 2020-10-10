@@ -8,7 +8,7 @@ RUN wget -q --no-check-certificate -O /tmp/xpdf-tools.tgz https://dl.xpdfreader.
     tar xzf /tmp/xpdf-tools.tgz && \
     rm /tmp/xpdf-tools.tgz && \
     cd xpdf*/bin64 && \
-    for i in * ; do mv $i /usr/local/bin/xpdf-$i; done && \
+    mv pdftotext /usr/local/bin/xpdf-pdftotext && \
     cd /tmp && \
     rm -Rf xpdf*
     
