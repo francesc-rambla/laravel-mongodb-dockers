@@ -1,0 +1,6 @@
+#!/bin/bash
+
+TEMPFILE=$(tempfile)
+pdftohtml -q -i -s -stdout -enc UTF-8 "$1" "$TEMPFILE"
+cat "$TEMPFILE-html.html"
+rm -f $TEMPFILE $TEMPFILE*
