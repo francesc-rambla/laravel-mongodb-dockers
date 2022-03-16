@@ -12,6 +12,4 @@ RUN chmod +x /usr/local/bin/runjobs.sh
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-USER www
-
 ENTRYPOINT [ "/entrypoint.sh" ]
