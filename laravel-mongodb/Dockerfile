@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:7.4-fpm-bullseye
 
 # Set working directory
 WORKDIR /var/www

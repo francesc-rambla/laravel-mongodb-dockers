@@ -4,7 +4,7 @@ FROM frambla/laravel-mongodb-poppler:latest
 USER root
 
 RUN apt-get update \ 
-  && apt-get -y install -qq --force-yes cron
+  && apt-get -y install -qq --force-yes cron logrotate
 
 COPY runjobs.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/runjobs.sh
