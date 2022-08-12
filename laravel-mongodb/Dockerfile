@@ -27,7 +27,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # Install extensions
 RUN pecl install mongodb
-RUN docker-php-ext-install pdo_mysql mysqli mbstring zip exif pcntl bcmath
+RUN docker-php-ext-install pdo_mysql mysqli mbstring zip exif pcntl bcmath calendar
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ 
 RUN docker-php-ext-install gd
 RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
