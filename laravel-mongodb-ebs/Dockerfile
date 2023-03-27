@@ -16,8 +16,15 @@ RUN apt-get update && \
       libbz2-dev \
       python3-pip
 
+RUN apt-get update && \
+    apt-get install -y \
+	nodejs \
+	npm
+
+RUN apt-get clean
+
 # Install EB CLI
-RUN pip3 install awsebcli --upgrade
+#RUN pip3 install awsebcli --upgrade
 #RUN git clone https://github.com/aws/aws-elastic-beanstalk-cli-setup.git && \
 #    ./aws-elastic-beanstalk-cli-setup/scripts/bundled_installer
 

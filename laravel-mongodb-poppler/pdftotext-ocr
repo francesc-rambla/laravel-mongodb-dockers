@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+    echo "Usage: $0 pdf-file"
+    exit 1
+fi
+
+PDFFILE=$1
+BASENAME=$(basename "$PDFFILE" .pdf)
+DIRNAME=$(dirname "$PDFFILE")
+if [ "$DIRNAME" == "." ]
+then
+    DIRNAME=$(pwd)
+fi
+
+# Create images for each page in PDF
+mkdir "$DIRNAME/$BASENAME" && cd $DIRNAME/$BASENAME
+pdftoppm -png -r 300 "$DIRNAME/${BASENAME}.pdf" "${BASENAME}"
+
+# Convert images to text with OCR
+for i in *.png
+do
+  # Let's run tesseract on this page with params to preserve page layout	
+  tesseract $i page --psm 6 -c preserve_interword_spaces=1 quiet
+  cat page.txt >> "${BASENAME}.txt"
+done
+
+# Cat converted text to stdin
+cat "${BASENAME}.txt"
+
+# Clear images
+rm -Rf "$DIRNAME/$BASENAME"
