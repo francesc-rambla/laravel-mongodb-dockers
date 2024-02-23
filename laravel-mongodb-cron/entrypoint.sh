@@ -1,12 +1,8 @@
 #!/bin/bash
 
-TMPFILE=$( mktemp )
-for i in /etc/cronjobs/*
-do
-   cat $i >> $TMPFILE
-done
+env >> /etc/environment
 
-/usr/bin/crontab -u www $TMPFILE
-rm $TMPFILE
+/usr/local/bin/updatejobs.sh
 
-/usr/sbin/cron -f
+echo "$@"
+exec "$@"

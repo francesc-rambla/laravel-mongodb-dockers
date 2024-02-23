@@ -15,5 +15,12 @@ RUN wget -q --no-check-certificate -O /tmp/phantomjs.tar.bz2 https://bitbucket.o
     cd /tmp && \
     tar xvjf phantomjs.tar.bz2 -C /usr/local/share && \
     ln -s /usr/local/share/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/
+RUN apt-get install -y libssh2-1-dev libssh2-1 \
+    && curl http://pecl.php.net/get/ssh2-1.2.tgz -o ssh2.tgz && \
+    pecl install ssh2 ssh2.tgz && \
+    docker-php-ext-enable ssh2 && \
+    rm -rf ssh2.tgz 
+
+RUN apt-get clean 
 
 USER www

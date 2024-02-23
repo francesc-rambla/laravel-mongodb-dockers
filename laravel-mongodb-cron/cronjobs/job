@@ -1,2 +1,3 @@
-* * * * *	/usr/local/bin/runjobs.sh
-
+* * * * * 	root 	echo "ROOT: $(date)" >/proc/1/fd/1 2>/proc/1/fd/2
+* * * * * 	root 	echo "${CUSTOM_ENV_VAR}" >/proc/1/fd/1 2>/proc/1/fd/2
+* * * * *	root 	echo "WWW: $(date)" >/proc/1/fd/1 2>/proc/1/fd/2

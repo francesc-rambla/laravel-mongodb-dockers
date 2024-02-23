@@ -1,4 +1,4 @@
-FROM frambla/laravel-mongodb
+FROM frambla/laravel-mongodb:latest
 
 USER root
 RUN apt-get update && apt-get install -y poppler-utils wget tesseract-ocr
