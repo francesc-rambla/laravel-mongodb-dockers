@@ -6,8 +6,9 @@ USER root
 RUN apt-get update \ 
   && apt-get -y install -qq --force-yes cron logrotate
 
-RUN apt-get install -y libssh2-1-dev libssh2-1 \
-    && curl http://pecl.php.net/get/ssh2-1.2.tgz -o ssh2.tgz && \
+RUN apt-get install -y libssh2-1-dev libssh2-1 && \
+    pecl channel-update pecl.php.net && \
+    curl http://pecl.php.net/get/ssh2-1.4.1.tgz -o ssh2.tgz && \
     pecl install ssh2 ssh2.tgz && \
     docker-php-ext-enable ssh2 && \
     rm -rf ssh2.tgz 
